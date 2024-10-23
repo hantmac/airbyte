@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test
 abstract class S3V2WriteTest(path: String) :
     BasicFunctionalityIntegrationTest(
         S3V2TestUtils.getConfig(path),
+        S3V2Specification::class.java,
         S3V2DataDumper,
         NoopDestinationCleaner,
         NoopExpectedRecordMapper,
@@ -37,3 +38,12 @@ class S3V2WriteTestJsonGzip : S3V2WriteTest(S3V2TestUtils.JSON_GZIP_CONFIG_PATH)
 class S3V2WriteTestCsvUncompressed : S3V2WriteTest(S3V2TestUtils.CSV_UNCOMPRESSED_CONFIG_PATH)
 
 class S3V2WriteTestCsvGzip : S3V2WriteTest(S3V2TestUtils.CSV_GZIP_CONFIG_PATH)
+
+class S3V2WriteTestAvroUncompressed : S3V2WriteTest(S3V2TestUtils.AVRO_UNCOMPRESSED_CONFIG_PATH)
+
+class S3V2WriteTestAvroBzip2 : S3V2WriteTest(S3V2TestUtils.AVRO_BZIP2_CONFIG_PATH)
+
+class S3V2WriteTestParquetUncompressed :
+    S3V2WriteTest(S3V2TestUtils.PARQUET_UNCOMPRESSED_CONFIG_PATH)
+
+class S3V2WriteTestParquetSnappy : S3V2WriteTest(S3V2TestUtils.PARQUET_SNAPPY_CONFIG_PATH)
